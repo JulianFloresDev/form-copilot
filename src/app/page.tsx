@@ -8,7 +8,7 @@ import { Contact } from '@/interfaces/interfaces';
 import { z, ZodError } from 'zod';
 
 // Define the schema
-export const ContactSchema = z.object({
+const ContactSchema = z.object({
   email: z.string().email(),
   phone: z.string(),
   company: z.string(),
