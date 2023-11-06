@@ -4,7 +4,7 @@ import { Contact } from '@/interfaces/interfaces';
 
 const API_URL = process.env.API_URL || '';
 
-async function postHandler(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
     const data: Contact = req.body;
     try {
         const response = await fetch(API_URL, {
@@ -21,8 +21,3 @@ async function postHandler(req: NextApiRequest, res: NextApiResponse) {
         res.status(500).json({ error: 'Error creating user' });
     }
 }
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
-    POST: postHandler,
-};
