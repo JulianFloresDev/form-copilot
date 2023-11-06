@@ -60,7 +60,8 @@ export default function Home() {
       console.log(response);
     } catch (error: unknown) {
       if (error instanceof ZodError) {
-        setError(error.message);
+        const errorMessages = error.errors.map(err => err.message);
+        setError(errorMessages.join(', '));
       } else {
         throw error;
       }
@@ -86,32 +87,38 @@ export default function Home() {
         {/* En este punto le pedí que extienda el formulario y lo haga m,ás accesible: 
         Prompt 8: Make this form more accesible, adding labels for each input, add gap too */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <label>
-            Email
+          <div className="flex flex-col text-gray-800">
+            <label>Email</label>
             <input name="email" type="email" className="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="Email" />
-          </label>
-          <label>
-            Número celular
+          </div>
+          <div className="flex flex-col text-gray-800">
+            <label>Número celular</label>
             <input name="phone" type="tel" className="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="Phone" />
-          </label>
-          <label>
-            Companía
+          </div>
+          <div className="flex flex-col text-gray-800">
+            <label>Companía</label>
             <input name="company" type="text" className="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="Company" />
-          </label>
-          <label>
-            Nombre
+          </div>
+          <div className="flex flex-col text-gray-800">
+            <label>Nombre</label>
             <input name="firstname" type="text" className="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="First Name" />
-          </label>
-          <label>
-            Apellido
+          </div>
+          <div className="flex flex-col text-gray-800">
+            <label>Apellido</label>
             <input name="lastname" type="text" className="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="Last Name" />
-          </label>
-          <label>
-            User ID
+          </div>
+          <div className="flex flex-col text-gray-800">
+            <label>User ID</label>
             <input name="idUser" type="text" className="bg-gray-100 text-gray-800 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" placeholder="User ID" />
-          </label>
+          </div>
           <button type="submit" className="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-pink-600 hover:to-rose-600 transition ease-in-out duration-150">Continuar</button>
-          {error && <div className="text-red-500">{error}</div>}
+          {error && (
+            <ul className="text-red-600 text-sm font-bold">
+              {error.split(', ').map((err, index) => (
+                <li key={index}>{err}</li>
+              ))}
+            </ul>
+          )}
         </form>
       </div>
 
