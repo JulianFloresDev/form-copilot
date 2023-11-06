@@ -1,11 +1,10 @@
-// Prompt 5: Refactor to use POST method based on Next 13 docs
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { Contact } from '@/interfaces/interfaces';
 
 const API_URL = process.env.API_URL || '';
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-    const data: Contact = req.body;
+export async function POST(req: NextRequest, res: NextResponse) {
+    const reqBody = await req.json();
     try {
         const response = await fetch(API_URL, {
             method: 'POST',
@@ -13,11 +12,11 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${process.env.API_TOKEN}`
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(reqBody)
         });
         const result = await response.json();
-        res.status(200).json(result);
+        res.json(result, { status: 200 });
     } catch (error) {
-        res.status(500).json({ error: 'Error creating user' });
+        res.json({ error: 'Error creating user' }, { status: 500 });
     }
 }
