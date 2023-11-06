@@ -25,6 +25,7 @@ This project involves creating a registration form with fields for email, phone,
 
 ## Time Invested
 
-![image](https://github.com/JulianFloresDev/form-copilot/assets/96196361/c30fb929-1483-423a-93d8-22ae011baf34)
+![image](https://github.com/JulianFloresDev/form-copilot/assets/96196361/e7c6d583-0cc4-4891-b101-6841e56a544f)
+
 
 The final result is a styled and accessible form that validates input data before submission and displays error messages conditionally.
