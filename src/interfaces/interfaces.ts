@@ -1,0 +1,10 @@
+// interfaces.ts
+export interface Contact {
+    email: string;
+    firstname: string;
+    lastname: string;
+    phone: string;
+    company: string;
+    idUser: string;
+}
+
