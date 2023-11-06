@@ -23,4 +23,8 @@ This project involves creating a registration form with fields for email, phone,
 
 10. **Display error messages conditionally:** If an error occurs during form submission, the error message is displayed in a text box. The error message is displayed conditionally using React state.
 
+## Time Invested
+
+![image](https://github.com/JulianFloresDev/form-copilot/assets/96196361/c30fb929-1483-423a-93d8-22ae011baf34)
+
 The final result is a styled and accessible form that validates input data before submission and displays error messages conditionally.
